@@ -16,7 +16,7 @@ function M.get_colors()
     }
   else
     return {
-      bg          = "#151516", -- Your signature deep canvas
+      bg          = "#1a1b26", -- Your signature deep canvas
       fg          = "#ffffff", -- Pure white text
       sidebar_bg  = "#131314", -- Subtle sidebar depth
       comment     = "#f4e004", -- Vibrant yellow comment
