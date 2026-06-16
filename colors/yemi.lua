@@ -30,11 +30,9 @@ hl("PmenuSel",     { fg = colors.bg, bg = colors.fg })
 -------------------------------------------------------------------------------
 -- 2. Brackets, Indent Guides, and Scopes (Cleaned & Hidden)
 -------------------------------------------------------------------------------
--- Forcing uniform foreground text color for all bracket levels (Removes rainbow brackets)
 hl("MatchParen", { fg = colors.fg, bold = true })
 hl("@punctuation.bracket", { fg = colors.fg })
 
--- Hiding indentation lines completely to respect your VS Code design
 hl("IblIndent", { fg = colors.none, bg = colors.none })
 hl("IblScope",  { fg = colors.none, bg = colors.none })
 hl("IndentBlanklineChar", { fg = colors.none })
@@ -48,31 +46,51 @@ hl("NeoTreeNormal",    { fg = colors.fg, bg = colors.sidebar_bg })
 hl("NeoTreeNormalNC",  { fg = colors.fg, bg = colors.sidebar_bg })
 
 -------------------------------------------------------------------------------
--- 4. Treesitter Standard Syntax Highlighting (Alabaster Minimalist Design)
+-- 4. Standard Vim Master Groups (Fixes Python, C, and all other languages)
 -------------------------------------------------------------------------------
--- Monochromatic Base
+hl("Comment",        { fg = colors.comment, italic = true })
+hl("String",         { fg = colors.string })
+hl("Number",         { fg = colors.number })
+hl("Boolean",        { fg = colors.number })
+hl("Constant",       { fg = colors.number })
+hl("Function",       { fg = colors.func })
+hl("Keyword",        { fg = colors.fg, italic = true })
+hl("Statement",      { fg = colors.fg, italic = true })
+hl("Conditional",    { fg = colors.fg, italic = true })
+hl("Repeat",         { fg = colors.fg, italic = true })
+hl("PreProc",        { fg = colors.number }) -- For macros/imports
+hl("Include",        { fg = colors.fg, italic = true })
+hl("Type",           { fg = colors.fg })
+hl("Identifier",     { fg = colors.fg })
+hl("Operator",       { fg = colors.fg })
+hl("Delimiter",      { fg = colors.fg })
+
+-------------------------------------------------------------------------------
+-- 5. Treesitter Groups (Linked directly to Master Groups)
+-------------------------------------------------------------------------------
 hl("@variable",           { fg = colors.fg })
 hl("@variable.builtin",   { fg = colors.fg })
 hl("@property",           { fg = colors.fg })
-hl("@operator",           { fg = colors.fg })
-hl("@punctuation.delimiter", { fg = colors.fg })
-hl("@type",               { fg = colors.fg })
-hl("@type.builtin",       { fg = colors.fg })
+hl("@operator",           { link = "Operator" })
+hl("@punctuation.delimiter", { link = "Delimiter" })
+hl("@type",               { link = "Type" })
+hl("@type.builtin",       { link = "Type" })
 hl("@constructor",        { fg = colors.fg })
 
--- Monochromatic + Italicized Layout Controls
-hl("@keyword",            { fg = colors.fg, italic = true })
-hl("@keyword.conditional", { fg = colors.fg, italic = true })
-hl("@keyword.repeat",      { fg = colors.fg, italic = true })
+hl("@keyword",            { link = "Keyword" })
+hl("@keyword.conditional", { link = "Conditional" })
+hl("@keyword.repeat",      { link = "Repeat" })
 hl("@keyword.return",      { fg = colors.fg, italic = true })
-hl("@keyword.import",      { fg = colors.fg, italic = true })
+hl("@keyword.import",      { link = "Include" })
+hl("@keyword.function",    { link = "Keyword" })
 
--- The Specific Colors Pinned Pops
-hl("@comment",            { fg = colors.comment, italic = true })
-hl("@string",             { fg = colors.string })
-hl("@number",             { fg = colors.number })
-hl("@boolean",            { fg = colors.number })
-hl("@constant",           { fg = colors.number })
-hl("@function",           { fg = colors.func })
-hl("@function.call",      { fg = colors.func })
-hl("@function.builtin",   { fg = colors.func })
+hl("@comment",            { link = "Comment" })
+hl("@string",             { link = "String" })
+hl("@number",             { link = "Number" })
+hl("@boolean",            { link = "Boolean" })
+hl("@constant",           { link = "Constant" })
+hl("@function",           { link = "Function" })
+hl("@function.call",      { link = "Function" })
+hl("@function.builtin",   { link = "Function" })
+hl("@method",             { link = "Function" })
+hl("@method.call",        { link = "Function" })
