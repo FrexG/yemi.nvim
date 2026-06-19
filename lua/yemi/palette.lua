@@ -16,9 +16,9 @@ function M.get_colors()
     }
   else
     return {
-      bg          = "#151516", -- Your signature deep canvas
+      bg          = "#24292E", -- Your signature deep canvas
       fg          = "#ffffff", -- Pure white text
-      sidebar_bg  = "#131314", -- Subtle sidebar depth
+      sidebar_bg  = "#23282D", -- Subtle sidebar depth
       comment     = "#f4e004", -- Vibrant yellow comment
       string      = "#C3E88D", -- Tokyo night neon green
       number      = "#f7768e", -- Tokyo night pink
