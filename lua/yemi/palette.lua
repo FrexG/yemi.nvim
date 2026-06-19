@@ -16,14 +16,14 @@ function M.get_colors()
     }
   else
     return {
-      bg          = "#24292E", -- Your signature deep canvas
+      bg          = "#24292E", -- charcoal gray canvas 
       fg          = "#ffffff", -- Pure white text
       sidebar_bg  = "#23282D", -- Subtle sidebar depth
       comment     = "#f4e004", -- Vibrant yellow comment
       string      = "#C3E88D", -- Tokyo night neon green
       number      = "#f7768e", -- Tokyo night pink
       func        = "#b4f9f8", -- Cyan function pop
-      ui_muted    = "#222225", -- Visual selections/hovers
+      ui_muted    = "#A6A6A6", -- Visual selections/hovers
       none        = "NONE",
     }
   end
