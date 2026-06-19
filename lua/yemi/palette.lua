@@ -23,7 +23,7 @@ function M.get_colors()
       string      = "#C3E88D", -- Tokyo night neon green
       number      = "#f7768e", -- Tokyo night pink
       func        = "#b4f9f8", -- Cyan function pop
-      ui_muted    = "#2F2F2F", -- Visual selections/hovers
+      ui_muted    = "#343F4C", -- Visual selections/hovers
       none        = "NONE",
     }
   end
