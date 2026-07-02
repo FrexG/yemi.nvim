@@ -19,7 +19,7 @@ function M.get_colors()
       bg          = "#24292E", -- charcoal gray canvas 
       fg          = "#ffffff", -- Pure white text
       sidebar_bg  = "#23282D", -- Subtle sidebar depth
-      comment     = "#f4e004", -- Vibrant yellow comment
+      comment     = "#dfdf8e", -- Vibrant yellow comment
       string      = "#C3E88D", -- Tokyo night neon green
       number      = "#f7768e", -- Tokyo night pink
       func        = "#b4f9f8", -- Cyan function pop
