@@ -46,51 +46,113 @@ hl("NeoTreeNormal",    { fg = colors.fg, bg = colors.sidebar_bg })
 hl("NeoTreeNormalNC",  { fg = colors.fg, bg = colors.sidebar_bg })
 
 -------------------------------------------------------------------------------
--- 4. Standard Vim Master Groups (Fixes Python, C, and all other languages)
+-- 4. Standard Vim highlight groups
 -------------------------------------------------------------------------------
-hl("Comment",        { fg = colors.comment, italic = true })
-hl("String",         { fg = colors.string })
-hl("Number",         { fg = colors.number })
-hl("Boolean",        { fg = colors.number })
-hl("Constant",       { fg = colors.func})
-hl("Function",       { fg = colors.func })
-hl("Keyword",        { fg = colors.number })
-hl("Statement",      { fg = colors.number })
-hl("Conditional",    { fg = colors.number })
-hl("Repeat",         { fg = colors.number })
-hl("PreProc",        { fg = colors.number }) -- For macros/imports
-hl("Include",        { fg = colors.fg })
-hl("Type",           { fg = colors.fg })
-hl("Identifier",     { fg = colors.fg })
-hl("Operator",       { fg = colors.number })
-hl("Delimiter",      { fg = colors.fg })
+
+hl("Comment",     { fg = colors.comment, italic = true })
+
+hl("String",      { fg = colors.string })
+hl("Character",   { fg = colors.string })
+
+hl("Number",      { fg = colors.number })
+hl("Float",       { fg = colors.number })
+hl("Boolean",     { fg = colors.number })
+
+-- Keep generic constants pink, consistent with VS Code's "constant" scope.
+hl("Constant",    { fg = colors.number })
+
+hl("Function",    { fg = colors.func })
+
+hl("Keyword",     { fg = colors.number })
+hl("Statement",   { fg = colors.number })
+hl("Conditional", { fg = colors.number })
+hl("Repeat",      { fg = colors.number })
+hl("Exception",   { fg = colors.number })
+
+-- C preprocessor directives
+hl("PreProc",     { fg = colors.number })
+hl("Include",     { fg = colors.number })
+hl("Define",      { fg = colors.number })
+hl("Macro",       { fg = colors.number })
+
+-- Generic Vim Type stays cyan for user-defined type names.
+hl("Type",        { fg = colors.func })
+hl("Typedef",     { fg = colors.number })
+hl("StorageClass",{ fg = colors.number })
+hl("Structure",   { fg = colors.number })
+
+hl("Identifier",  { fg = colors.fg })
+hl("Operator",    { fg = colors.fg })
+hl("Delimiter",   { fg = colors.fg })
+hl("Special",     { fg = colors.fg })
 
 -------------------------------------------------------------------------------
--- 5. Treesitter Groups (Linked directly to Master Groups)
+-- 5. Tree-sitter captures
 -------------------------------------------------------------------------------
-hl("@variable",           { fg = colors.fg })
-hl("@variable.builtin",   { fg = colors.fg })
-hl("@property",           { fg = colors.fg })
-hl("@operator",           { link = "Operator" })
-hl("@punctuation.delimiter", { link = "Delimiter" })
-hl("@type",               { link = "Type" })
-hl("@type.builtin",       { link = "Type" })
-hl("@constructor",        { fg = colors.func })
 
-hl("@keyword",            { link = "Keyword" })
-hl("@keyword.conditional", { link = "Conditional" })
-hl("@keyword.repeat",      { link = "Repeat" })
-hl("@keyword.return",      { fg = colors.number})
-hl("@keyword.import",      { link = "Include" })
-hl("@keyword.function",    { link = "Keyword" })
+-- Comments
+hl("@comment",               { link = "Comment" })
+hl("@comment.documentation", { link = "Comment" })
 
-hl("@comment",            { link = "Comment" })
-hl("@string",             { link = "String" })
-hl("@number",             { link = "Number" })
-hl("@boolean",            { link = "Boolean" })
-hl("@constant",           { link = "Constant" })
-hl("@function",           { link = "Function" })
-hl("@function.call",      { link = "Function" })
-hl("@function.builtin",   { link = "Function" })
-hl("@method",             { link = "Function" })
-hl("@method.call",        { link = "Function" })
+-- Strings
+hl("@string",                { link = "String" })
+hl("@string.documentation",  { link = "String" })
+hl("@string.escape",         { fg = colors.string })
+hl("@string.special",        { fg = colors.string })
+hl("@string.special.path",   { fg = colors.string })
+hl("@character",             { link = "Character" })
+
+-- Numbers and constants
+hl("@number",                { link = "Number" })
+hl("@number.float",          { link = "Float" })
+hl("@boolean",               { link = "Boolean" })
+hl("@constant",              { link = "Constant" })
+hl("@constant.builtin",      { link = "Constant" })
+hl("@constant.macro",        { link = "Constant" })
+
+-- Variables and struct fields
+hl("@variable",              { fg = colors.fg })
+hl("@variable.builtin",      { fg = colors.fg })
+hl("@variable.parameter",    { fg = colors.fg })
+hl("@variable.member",       { fg = colors.fg })
+hl("@property",              { fg = colors.fg })
+
+-- User-defined types: Arena
+hl("@type",                  { fg = colors.func })
+hl("@type.definition",       { fg = colors.func })
+
+-- Built-in and library types: int, void, size_t
+hl("@type.builtin",          { fg = colors.fg })
+
+-- Keywords: typedef, struct, return, if, for...
+hl("@keyword",               { link = "Keyword" })
+hl("@keyword.return",        { link = "Keyword" })
+hl("@keyword.function",      { link = "Keyword" })
+hl("@keyword.operator",      { link = "Keyword" })
+hl("@keyword.conditional",   { link = "Conditional" })
+hl("@keyword.repeat",        { link = "Repeat" })
+hl("@keyword.exception",     { link = "Exception" })
+hl("@keyword.modifier",      { link = "Keyword" })
+hl("@keyword.type",          { link = "Keyword" })
+
+-- Preprocessor: #include, #define, #if
+hl("@keyword.directive",        { fg = colors.number })
+hl("@keyword.directive.define", { fg = colors.number })
+
+-- Header names in #include <stdio.h>
+hl("@module",                 { fg = colors.string })
+hl("@module.builtin",         { fg = colors.string })
+
+-- Functions
+hl("@function",               { link = "Function" })
+hl("@function.call",          { link = "Function" })
+hl("@function.builtin",       { link = "Function" })
+hl("@function.method",        { link = "Function" })
+hl("@function.method.call",   { link = "Function" })
+hl("@constructor",            { link = "Function" })
+
+-- Operators and punctuation
+hl("@operator",               { link = "Operator" })
+hl("@punctuation.bracket",    { link = "Delimiter" })
+hl("@punctuation.delimiter",  { link = "Delimiter" })
+hl("@punctuation.special",    { link = "Delimiter" })
