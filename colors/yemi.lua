@@ -76,15 +76,14 @@ hl("Define",      { fg = colors.number })
 hl("Macro",       { fg = colors.number })
 
 -- Generic Vim Type stays cyan for user-defined type names.
-hl("Type",        { fg = colors.func })
+hl("Type",        { fg = colors.fg})
 hl("Typedef",     { fg = colors.number })
 hl("StorageClass",{ fg = colors.number })
-hl("Structure",   { fg = colors.number })
 
 hl("Identifier",  { fg = colors.fg })
-hl("Operator",    { fg = colors.fg })
+hl("Operator",    { fg = colors.number })
 hl("Delimiter",   { fg = colors.fg })
-hl("Special",     { fg = colors.fg })
+hl("Special",     { fg = colors.number })
 
 -------------------------------------------------------------------------------
 -- 5. Tree-sitter captures
@@ -106,9 +105,9 @@ hl("@character",             { link = "Character" })
 hl("@number",                { link = "Number" })
 hl("@number.float",          { link = "Float" })
 hl("@boolean",               { link = "Boolean" })
-hl("@constant",              { link = "Constant" })
-hl("@constant.builtin",      { link = "Constant" })
-hl("@constant.macro",        { link = "Constant" })
+hl("@constant",              { fg = colors.func})
+hl("@constant.builtin",      { fg = colors.func })
+hl("@constant.macro",        { fg = colors.func })
 
 -- Variables and struct fields
 hl("@variable",              { fg = colors.fg })
@@ -118,11 +117,11 @@ hl("@variable.member",       { fg = colors.fg })
 hl("@property",              { fg = colors.fg })
 
 -- User-defined types: Arena
-hl("@type",                  { fg = colors.func })
-hl("@type.definition",       { fg = colors.func })
+hl("@type",                  { link = "Type"})
+hl("@type.definition",       { link = "Type"})
 
 -- Built-in and library types: int, void, size_t
-hl("@type.builtin",          { fg = colors.fg })
+hl("@type.builtin",          { link = "Type"})
 
 -- Keywords: typedef, struct, return, if, for...
 hl("@keyword",               { link = "Keyword" })
