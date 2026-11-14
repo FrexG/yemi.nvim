@@ -49,7 +49,7 @@ hl("NeoTreeNormalNC",  { fg = colors.fg, bg = colors.sidebar_bg })
 -- 4. Standard Vim highlight groups
 -------------------------------------------------------------------------------
 
-hl("Comment",     { fg = colors.comment, italic = true })
+hl("Comment",     { fg = colors.comment, italic = false})
 
 hl("String",      { fg = colors.string })
 hl("Character",   { fg = colors.string })
